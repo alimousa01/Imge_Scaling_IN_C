@@ -22,7 +22,7 @@ int main (int argc, char **argv)
     int option;
     char input[20]="";
     char output[20]="";
-    double size;
+    double size = 0;
 
     while (( option = getopt(argc, argv, "i:o:s:h")) !=-1)
     {
