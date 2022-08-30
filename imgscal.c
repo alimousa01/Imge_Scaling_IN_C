@@ -101,7 +101,7 @@ int main (int argc, char **argv)
 
 
 
-    int shmid = shmget(IPC_PRIVATE, x*y*sizeof(pixel_rgb), IPC_CREAT | 0644 );
+    int shmid = shmget(IPC_PRIVATE, x*y*sizeof(pixel_rgb), IPC_CREAT | 0600 );
 
     if (shmid < 0)
     {
@@ -137,7 +137,8 @@ int main (int argc, char **argv)
             fscanf(fp1,"%lf",&img[i].b);
 
         }
-
+        
+        fclose(fp1);
         printf("I am the child process and this is my ID: %d and I finished\n", getpid());
 
     }
@@ -270,6 +271,7 @@ int main (int argc, char **argv)
 
         free(img2);
         free(img3);
+        fclose(fp2);
 
         printf("I am the The parent process and this is my ID: %d and I finished\n", getpid());
 
